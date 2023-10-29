@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://golangexample.com/discord-bot-in-golang/ -->
+<html lang="en" style="transform: none;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discord Bot in Golang</title>
+<link rel="stylesheet" href="./Discord Bot in Golang_files/screen.css">
+<link rel="stylesheet" href="./Discord Bot in Golang_files/icon" media="all" onload="this.media=&#39;all&#39;" crossorigin="">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Discord Bot in Golang_files/css2" rel="stylesheet">
+<link rel="shortcut icon" href="https://golangexample.com/favicon.png" type="image/png">
+<link rel="canonical" href="https://golangexample.com/discord-bot-in-golang/">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<link rel="amphtml" href="https://golangexample.com/discord-bot-in-golang/amp/">
+<meta property="og:site_name" content="Golang Example">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discord Bot in Golang">
+<meta property="og:description" content="Discord Bot in Golang">
+<meta property="og:url" content="https://golangexample.com/discord-bot-in-golang/">
+<meta property="og:image" content="https://golangexample.com/content/images/2021/11/Snipaste_2021-11-15_12-20-00.jpg">
+<meta property="article:published_time" content="2021-11-15T02:46:38.000Z">
+<meta property="article:modified_time" content="2021-11-15T04:20:07.000Z">
+<meta property="article:tag" content="Discord">
+<meta property="article:tag" content="Bot">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Discord Bot in Golang">
+<meta name="twitter:description" content="Discord Bot in Golang">
+<meta name="twitter:url" content="https://golangexample.com/discord-bot-in-golang/">
+<meta name="twitter:image" content="https://golangexample.com/content/images/2021/11/Snipaste_2021-11-15_12-20-00.jpg">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="John">
+<meta name="twitter:label2" content="Filed under">
+<meta name="twitter:data2" content="Discord, Bot">
+<meta property="og:image:width" content="751">
+<meta property="og:image:height" content="374">
+<script type="text/javascript" async="" src="./Discord Bot in Golang_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Discord Bot in Golang_files/js"></script><script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Golang Example",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://golangexample.com/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "John",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://golangexample.com/content/images/2022/05/Jeff-Lampkin-96x96.jpeg",
+            "width": 96,
+            "height": 96
+        },
+        "url": "https://golangexample.com/author/golang/",
+        "sameAs": []
+    },
+    "headline": "Discord Bot in Golang",
+    "url": "https://golangexample.com/discord-bot-in-golang/",
+    "datePublished": "2021-11-15T02:46:38.000Z",
+    "dateModified": "2021-11-15T04:20:07.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://golangexample.com/content/images/2021/11/Snipaste_2021-11-15_12-20-00.jpg",
+        "width": 751,
+        "height": 374
+    },
+    "keywords": "Discord, Bot",
+    "description": "Discord Bot in Golang",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://golangexample.com/"
+    }
+}
+    </script>
+<script src="./Discord Bot in Golang_files/ghost-sdk.min.js.download"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "c94b13ad6a81"
+});
+</script>
+<meta name="generator" content="Ghost 1.26">
+<link rel="alternate" type="application/rss+xml" title="Golang Example" href="https://golangexample.com/rss/">
+
+<script async="" src="./Discord Bot in Golang_files/js(1)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2R3K9S6ESH');
+</script>
+<meta name="msvalidate.01" content="82F8F4C768D54084E71C38F79A75C45F">
+<style>.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style><style id="isso-style" type="text/css">#isso-thread * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#isso-thread .isso-comment-header a {
+    text-decoration: none;
+}
+
+#isso-thread {
+    padding: 0;
+    margin: 0;
+}
+#isso-thread > h4 {
+    color: #555;
+    font-weight: bold;
+}
+#isso-thread > .isso-feedlink {
+    float: right;
+    padding-left: 1em;
+}
+#isso-thread > .isso-feedlink > a {
+    font-size: 0.8em;
+    vertical-align: bottom;
+}
+#isso-thread .textarea {
+    min-height: 58px;
+    outline: 0;
+}
+#isso-thread .textarea.placeholder {
+    color: #757575;
+}
+
+#isso-root .isso-comment {
+    max-width: 68em;
+    padding-top: 0.95em;
+    margin: 0.95em auto;
+}
+#isso-root .preview .isso-comment {
+    padding-top: 0;
+    margin: 0;
+}
+#isso-root .isso-comment:not(:first-of-type),
+.isso-follow-up .isso-comment {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.isso-comment > div.avatar {
+    display: block;
+    float: left;
+    width: 7%;
+    margin: 3px 15px 0 0;
+}
+.isso-comment > div.avatar > svg {
+    max-width: 48px;
+    max-height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.isso-comment > div.text-wrapper {
+    display: block;
+}
+.isso-comment .isso-follow-up {
+    padding-left: calc(7% + 20px);
+}
+.isso-comment > div.text-wrapper > .isso-comment-header, .isso-comment > div.text-wrapper > .isso-comment-footer {
+    font-size: 0.95em;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header {
+    font-size: 0.85em;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer {
+    padding: 0 6px;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer,
+.isso-comment > div.text-wrapper > .isso-comment-header a.permalink,
+.isso-comment > div.text-wrapper > .isso-comment-header .note,
+.isso-comment > div.text-wrapper > .isso-comment-header a.parent {
+    color: gray !important;
+    font-weight: normal;
+    text-shadow: none !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header a.permalink:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header .note:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header a.parent:hover {
+    color: #606060 !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .note {
+    float: right;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .author {
+    font-weight: bold;
+    color: #555;
+}
+.isso-comment > div.text-wrapper > .textarea-wrapper .textarea,
+.isso-comment > div.text-wrapper > .textarea-wrapper .preview {
+    margin-top: 0.2em;
+}
+.isso-comment > div.text-wrapper > div.text p {
+    margin-top: 0.2em;
+}
+.isso-comment > div.text-wrapper > div.text p:last-child {
+    margin-bottom: 0.2em;
+}
+.isso-comment > div.text-wrapper > div.text h1,
+.isso-comment > div.text-wrapper > div.text h2,
+.isso-comment > div.text-wrapper > div.text h3,
+.isso-comment > div.text-wrapper > div.text h4,
+.isso-comment > div.text-wrapper > div.text h5,
+.isso-comment > div.text-wrapper > div.text h6 {
+    font-size: 130%;
+    font-weight: bold;
+}
+.isso-comment > div.text-wrapper > div.textarea-wrapper .textarea,
+.isso-comment > div.text-wrapper > div.textarea-wrapper .preview {
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    border-radius: 2px;
+    box-shadow: 0 0 2px #888;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer {
+    font-size: 0.80em;
+    color: gray !important;
+    clear: left;
+}
+.isso-feedlink,
+.isso-comment > div.text-wrapper > .isso-comment-footer a {
+    font-weight: bold;
+    text-decoration: none;
+}
+.isso-feedlink:hover,
+.isso-comment > div.text-wrapper > .isso-comment-footer a:hover {
+    color: #111111 !important;
+    text-shadow: #aaaaaa 0 0 1px !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer > a {
+    position: relative;
+    top: .2em;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer > a + a {
+    padding-left: 1em;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer .votes {
+    color: gray;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer .upvote svg,
+.isso-comment > div.text-wrapper > .isso-comment-footer .downvote svg {
+    position: relative;
+    top: .2em;
+}
+.isso-comment .isso-postbox {
+    margin-top: 0.8em;
+}
+.isso-comment.isso-no-votes > * > .isso-comment-footer span.votes {
+    display: none;
+}
+
+.isso-postbox {
+    max-width: 68em;
+    margin: 0 auto 2em;
+    clear: right;
+}
+.isso-postbox > .form-wrapper {
+    display: block;
+    padding: 0;
+}
+.isso-postbox > .form-wrapper > .auth-section,
+.isso-postbox > .form-wrapper > .auth-section .post-action {
+    display: block;
+}
+.isso-postbox > .form-wrapper .textarea,
+.isso-postbox > .form-wrapper .preview {
+    margin: 0 0 .3em;
+    padding: .4em .8em;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.isso-postbox > .form-wrapper input[type=checkbox] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+    margin-left: 0;
+}
+.isso-postbox > .form-wrapper .notification-section {
+    font-size: 0.90em;
+    padding-top: .3em;
+}
+#isso-thread .textarea:focus,
+#isso-thread input:focus {
+    border-color: rgba(0, 0, 0, 0.8);
+}
+.isso-postbox > .form-wrapper > .auth-section .input-wrapper {
+    display: inline-block;
+    position: relative;
+    max-width: 25%;
+    margin: 0;
+}
+.isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
+    padding: .3em 10px;
+    max-width: 100%;
+    border-radius: 3px;
+    background-color: #fff;
+    line-height: 1.4em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action {
+    display: inline-block;
+    float: right;
+    margin: 0 0 0 5px;
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input {
+    padding: calc(.3em - 1px);
+    border-radius: 2px;
+    border: 1px solid #CCC;
+    background-color: #DDD;
+    cursor: pointer;
+    outline: 0;
+    line-height: 1.4em;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input:hover {
+    background-color: #CCC;
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input:active {
+    background-color: #BBB;
+}
+.isso-postbox > .form-wrapper .preview,
+.isso-postbox > .form-wrapper input[name="edit"],
+.isso-postbox.preview-mode > .form-wrapper input[name="preview"],
+.isso-postbox.preview-mode > .form-wrapper .textarea {
+    display: none;
+}
+.isso-postbox.preview-mode > .form-wrapper .preview {
+    display: block;
+}
+.isso-postbox.preview-mode > .form-wrapper input[name="edit"] {
+    display: inline;
+}
+.isso-postbox > .form-wrapper .preview {
+    background-color: #f8f8f8;
+    background: repeating-linear-gradient(
+        -45deg,
+        #f8f8f8,
+        #f8f8f8 10px,
+        #fff 10px,
+        #fff 20px
+    );
+}
+.isso-postbox > .form-wrapper > .notification-section {
+    display: none;
+    padding-bottom: 10px;
+}
+@media screen and (max-width:600px) {
+    .isso-postbox > .form-wrapper > .auth-section .input-wrapper {
+        display: block;
+        max-width: 100%;
+        margin: 0 0 .3em;
+    }
+    .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
+        width: 100%;
+    }
+}
+</style><style type="text/css">@font-face {
+  font-family: 'rbicon';
+  src: url(chrome-extension://dipiagiiohfljcicegpgffpbnjmgjcnf/fonts/rbicon.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+</style></head>
+<body class="post-template tag-discord tag-bot" style="transform: none;">
+<nav id="navbar" class="navbar is-white is-fixed-top is-transparent" style="
+        transform: translateY(-60px);
+      ">
+<div id="specialShadow" class="bd-special-shadow" style="opacity: 1; transform: scaleY(0);"></div>
+<div class="navbar-brand">
+<a class="navbar-item" href="https://golangexample.com/">
+<img src="./Discord Bot in Golang_files/favicon.png" alt=" Golang Example">
+</a>
+<a class="navbar-item " href="https://golangexample.com/">
+Golang Example
+</a>
+<div id="navbarBurger" class="navbar-burger burger" data-target="navMenubd-example">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<div id="navMenubd-example" class="navbar-menu">
+<div class="navbar-start">
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/discord-bot-in-golang/#">
+Awesome Go
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/command-line/">Command Line</a>
+<a class="navbar-item " href="https://golangexample.com/tag/oauth/">OAuth</a>
+<a class="navbar-item " href="https://golangexample.com/tag/database/">Database</a>
+<a class="navbar-item " href="https://golangexample.com/tag/algorithm/">Algorithm</a>
+<a class="navbar-item " href="https://golangexample.com/tag/data-structures/">Data Structures</a>
+<a class="navbar-item " href="https://golangexample.com/tag/time/">Time</a>
+<a class="navbar-item " href="https://golangexample.com/tag/distributed-systems/">Distributed Systems</a>
+<a class="navbar-item " href="https://golangexample.com/tag/distributed/">Distributed</a>
+<a class="navbar-item " href="https://golangexample.com/tag/dns/">DNS</a>
+<a class="navbar-item " href="https://golangexample.com/tag/dynamic/">Dynamic</a>
+<a class="navbar-item " href="https://golangexample.com/tag/email/">Email</a>
+<a class="navbar-item " href="https://golangexample.com/tag/errors/">Errors</a>
+<a class="navbar-item " href="https://golangexample.com/tag/files/">Files</a>
+<a class="navbar-item " href="https://golangexample.com/tag/games/">Games</a>
+<a class="navbar-item " href="https://golangexample.com/tag/generics/">Generics</a>
+<a class="navbar-item " href="https://golangexample.com/tag/goroutine/">Goroutine</a>
+<a class="navbar-item " href="https://golangexample.com/tag/gui/">GUI</a>
+<a class="navbar-item " href="https://golangexample.com/tag/iot/">IoT</a>
+<a class="navbar-item " href="https://golangexample.com/tag/job-scheduler/">Job Scheduler</a>
+<a class="navbar-item " href="https://golangexample.com/tag/json/">JSON</a>
+<a class="navbar-item " href="https://golangexample.com/tag/logging/">Logging</a>
+<a class="navbar-item " href="https://golangexample.com/tag/machine-learning/">Machine Learning</a>
+<a class="navbar-item " href="https://golangexample.com/tag/messaging/">Messaging</a>
+<a class="navbar-item " href="https://golangexample.com/tag/networking/">Networking</a>
+<a class="navbar-item " href="https://golangexample.com/tag/gorm/">GORM</a>
+<a class="navbar-item " href="https://golangexample.com/tag/query/">Query</a>
+<a class="navbar-item " href="https://golangexample.com/tag/security/">Security</a>
+<a class="navbar-item " href="https://golangexample.com/tag/webassembly/">WebAssembly</a>
+<a class="navbar-item " href="https://golangexample.com/tag/windows/">Windows</a>
+<a class="navbar-item " href="https://golangexample.com/tag/xml/">XML</a>
+<a class="navbar-item " href="https://golangexample.com/tag/testing/">Testing</a>
+</div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/discord-bot-in-golang/#">
+Media
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/images/">Images</a>
+<a class="navbar-item " href="https://golangexample.com/tag/video/">Video</a>
+<a class="navbar-item " href="https://golangexample.com/tag/music/">Music</a>
+<a class="navbar-item " href="https://golangexample.com/tag/audio/">Audio</a>
+<a class="navbar-item " href="https://golangexample.com/tag/charts/">Charts</a>
+<a class="navbar-item " href="https://golangexample.com/tag/spotify/">Spotify</a>
+<a class="navbar-item " href="https://golangexample.com/tag/youtube/">YouTube</a>
+<a class="navbar-item " href="https://golangexample.com/tag/image-processing/">Image Processing</a>
+<a class="navbar-item " href="https://golangexample.com/tag/svg/">SVG</a>
+<a class="navbar-item " href="https://golangexample.com/tag/avatar/">Avatar</a>
+<a class="navbar-item " href="https://golangexample.com/tag/image-analysis/">Image Analysis</a>
+<a class="navbar-item " href="https://golangexample.com/tag/map/">Maps</a>
+<a class="navbar-item " href="https://golangexample.com/tag/screenshot/">Screenshot</a>
+<a class="navbar-item " href="https://golangexample.com/tag/graphs/">Graphs</a>
+<a class="navbar-item " href="https://golangexample.com/tag/characters/">Characters</a>
+<a class="navbar-item " href="https://golangexample.com/tag/ffmpeg/">ffmpeg</a>
+<a class="navbar-item " href="https://golangexample.com/tag/camera/">Camera</a>
+<a class="navbar-item " href="https://golangexample.com/tag/pdf/">PDF</a>
+</div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/tag/tool/">
+Tool
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/tools/">Go Tools</a>
+<a class="navbar-item " href="https://golangexample.com/tag/devops/">DevOps Tools</a>
+<a class="navbar-item " href="https://golangexample.com/tag/kubernetes/">Kubernetes</a>
+<a class="navbar-item " href="https://golangexample.com/tag/bot/">Bot</a>
+<a class="navbar-item " href="https://golangexample.com/tag/discord/">Discord</a>
+<a class="navbar-item " href="https://golangexample.com/tag/telegram/">Telegram</a>
+<a class="navbar-item " href="https://golangexample.com/tag/crawler/">Crawler</a>
+<a class="navbar-item " href="https://golangexample.com/tag/proxy/">Proxy</a>
+<a class="navbar-item " href="https://golangexample.com/tag/twitter/">Twitter</a>
+<a class="navbar-item " href="https://golangexample.com/tag/instagram/">Instagram</a>
+<a class="navbar-item " href="https://golangexample.com/tag/twitch/">Twitch</a>
+<a class="navbar-item " href="https://golangexample.com/tag/scrapy/">Scrapy</a>
+<a class="navbar-item " href="https://golangexample.com/tag/github/">Github</a>
+<a class="navbar-item " href="https://golangexample.com/tag/generator/">Generator</a>
+<a class="navbar-item " href="https://golangexample.com/tag/terminal/">Terminal</a>
+<a class="navbar-item " href="https://golangexample.com/tag/trading/">Trading</a>
+<a class="navbar-item " href="https://golangexample.com/tag/password/">Password</a>
+<a class="navbar-item " href="https://golangexample.com/tag/checker/">Checker</a>
+<a class="navbar-item " href="https://golangexample.com/tag/configuration/">Configuration</a>
+<a class="navbar-item " href="https://golangexample.com/tag/localization/">Localization</a>
+<a class="navbar-item " href="https://golangexample.com/tag/attack/">Attack</a>
+<a class="navbar-item " href="https://golangexample.com/tag/protocol/">Protocol</a>
+<a class="navbar-item " href="https://golangexample.com/tag/neural-network/">Neural Network</a>
+<a class="navbar-item " href="https://golangexample.com/tag/network/">Network</a>
+<a class="navbar-item " href="https://golangexample.com/tag/remote/">Remote</a>
+<a class="navbar-item " href="https://golangexample.com/tag/monitoring/">Monitoring</a>
+<a class="navbar-item " href="https://golangexample.com/tag/widget/">Widget</a>
+<a class="navbar-item " href="https://golangexample.com/tag/script/">Script</a>
+<a class="navbar-item " href="https://golangexample.com/tag/grpc/">gRPC</a>
+<a class="navbar-item " href="https://golangexample.com/tag/console/">Console</a>
+</div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/discord-bot-in-golang/#">
+Data
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/data-visualization/">Data Visualization</a>
+<a class="navbar-item " href="https://golangexample.com/tag/analysis/">Analysis</a>
+<a class="navbar-item " href="https://golangexample.com/tag/dataset/">Dataset</a>
+<a class="navbar-item " href="https://golangexample.com/tag/database/">Database</a>
+<a class="navbar-item " href="https://golangexample.com/tag/sqlite/">SQLite</a>
+<a class="navbar-item " href="https://golangexample.com/tag/graphql/">GraphQL</a>
+<a class="navbar-item " href="https://golangexample.com/tag/postgresql/">PostgreSQL</a>
+<a class="navbar-item " href="https://golangexample.com/tag/mongodb/">MongoDB</a>
+<a class="navbar-item " href="https://golangexample.com/tag/visualization/">Visualization</a>
+<a class="navbar-item " href="https://golangexample.com/tag/mysql/">Mysql</a>
+<a class="navbar-item " href="https://golangexample.com/tag/aws/">AWS</a>
+<a class="navbar-item " href="https://golangexample.com/tag/nosql/">NoSQL</a>
+<a class="navbar-item " href="https://golangexample.com/tag/workflow/">Workflow</a>
+<a class="navbar-item " href="https://golangexample.com/tag/hacking/">Hacking</a>
+</div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/discord-bot-in-golang/#">
+Components
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/text/">Text</a>
+<a class="navbar-item " href="https://golangexample.com/tag/natural-language-processing/">Natural Language Processing</a>
+<a class="navbar-item " href="https://golangexample.com/tag/text-to-speech/">Text-to-Speech</a>
+<a class="navbar-item " href="https://golangexample.com/tag/ocr/">OCR</a>
+<a class="navbar-item " href="https://golangexample.com/tag/document/">Documentation</a>
+<a class="navbar-item " href="https://golangexample.com/tag/stream/">Stream</a>
+<a class="navbar-item " href="https://golangexample.com/tag/autocomplete/">Autocomplete</a>
+<a class="navbar-item " href="https://golangexample.com/tag/todo/">Todo</a>
+<a class="navbar-item " href="https://golangexample.com/tag/calculator/">Calculator</a>
+<a class="navbar-item " href="https://golangexample.com/tag/array/">Array</a>
+<a class="navbar-item " href="https://golangexample.com/tag/markdown/">Markdown</a>
+<a class="navbar-item " href="https://golangexample.com/tag/notifications/">Notifications</a>
+<a class="navbar-item " href="https://golangexample.com/tag/print/">Print</a>
+<a class="navbar-item " href="https://golangexample.com/tag/authentication/">Authentication</a>
+<a class="navbar-item " href="https://golangexample.com/tag/forms/">Forms</a>
+<a class="navbar-item " href="https://golangexample.com/tag/sort/">Sort</a>
+<a class="navbar-item " href="https://golangexample.com/tag/api/">API</a>
+<a class="navbar-item " href="https://golangexample.com/tag/restful-api/">RESTful API</a>
+<a class="navbar-item " href="https://golangexample.com/tag/label/">Label</a>
+<a class="navbar-item " href="https://golangexample.com/tag/function/">Function</a>
+<a class="navbar-item " href="https://golangexample.com/tag/cache/">Cache</a>
+<a class="navbar-item " href="https://golangexample.com/tag/logging/">Logging</a>
+<a class="navbar-item " href="https://golangexample.com/tag/font/">Font</a>
+<a class="navbar-item " href="https://golangexample.com/tag/calendar/">Calendar</a>
+<a class="navbar-item " href="https://golangexample.com/tag/fastapi/">FastAPI</a>
+<a class="navbar-item " href="https://golangexample.com/tag/django/">Django</a>
+<a class="navbar-item " href="https://golangexample.com/tag/websocket/">Websocket</a>
+<a class="navbar-item " href="https://golangexample.com/tag/raspberry-pi/">Raspberry Pi</a>
+<a class="navbar-item " href="https://golangexample.com/tag/excel/">Excel</a>
+<a class="navbar-item " href="https://golangexample.com/tag/server/">Server</a>
+<a class="navbar-item " href="https://golangexample.com/tag/editor/">Editor</a>
+</div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+<a class="navbar-link  " href="https://golangexample.com/discord-bot-in-golang/#">
+More
+</a>
+<div class="navbar-dropdown is-boxed">
+<a class="navbar-item " href="https://golangexample.com/tag/http/">HTTP</a>
+<a class="navbar-item " href="https://golangexample.com/tag/cms/">CMS</a>
+<a class="navbar-item " href="https://golangexample.com/tag/tree/">Tree</a>
+<a class="navbar-item " href="https://golangexample.com/tag/emoji/">Emoji</a>
+<a class="navbar-item " href="https://golangexample.com/tag/color/">Color</a>
+<a class="navbar-item " href="https://golangexample.com/tag/animation/">Animation</a>
+<a class="navbar-item " href="https://golangexample.com/tag/email/">Email</a>
+<a class="navbar-item " href="https://golangexample.com/tag/keyboard/">Keyboard</a>
+<a class="navbar-item " href="https://golangexample.com/tag/input/">Input</a>
+<a class="navbar-item " href="https://golangexample.com/tag/validation/">Validation</a>
+<a class="navbar-item " href="https://golangexample.com/tag/parser/">Parser</a>
+<a class="navbar-item " href="https://golangexample.com/tag/books/">Books</a>
+<a class="navbar-item " href="https://golangexample.com/tag/3d/">3D</a>
+<a class="navbar-item " href="https://golangexample.com/tag/search/">Search</a>
+<a class="navbar-item " href="https://golangexample.com/tag/download/">Download</a>
+<a class="navbar-item " href="https://golangexample.com/tag/chat/">Chat</a>
+<a class="navbar-item " href="https://golangexample.com/tag/simulation/">Simulation</a>
+<a class="navbar-item " href="https://golangexample.com/tag/framework/">Framework</a>
+<a class="navbar-item " href="https://golangexample.com/tag/apps-tag/">App</a>
+<a class="navbar-item " href="https://golangexample.com/tag/docker/">Docker</a>
+<a class="navbar-item " href="https://golangexample.com/tag/tutorial/">Tutorial</a>
+<a class="navbar-item " href="https://golangexample.com/tag/translation/">Translation</a>
+<a class="navbar-item " href="https://golangexample.com/tag/task/">Task</a>
+<a class="navbar-item " href="https://golangexample.com/tag/qr-codes/">QR Codes</a>
+<a class="navbar-item " href="https://golangexample.com/tag/serverless/">Serverless</a>
+<a class="navbar-item " href="https://golangexample.com/tag/ecommerce/">Ecommerce</a>
+<a class="navbar-item " href="https://golangexample.com/tag/weather/">Weather</a>
+<a class="navbar-item " href="https://golangexample.com/tag/cryptocurrency/">Cryptocurrency</a>
+</div>
+</div>
+</div>
+<div class="navbar-end">
+<a class="navbar-item is-hidden-desktop-only" href="https://golangexample.com/about/">
+About
+</a>
+</div>
+</div>
+</nav>
+<section class="ggcontent hidden-xs">
+<script async="" src="./Discord Bot in Golang_files/f.txt" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:1130px;height:250px" data-ad-client="ca-pub-5680150941998747" data-ad-slot="3755220091"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section> <div class="site" style="transform: none;">
+<div class="site-content" style="transform: none;">
+<div class="container" style="transform: none;">
+<div class="row" style="transform: none;">
+<div class="content-column col-xl-9 col-lg-8">
+<div class="content-area">
+<main class="site-main">
+<article class="post2  single">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h1 class="post-title">
+Discord Bot in Golang
+</h1>
+</header> <div class="post-meta">
+<time class="post-meta-date" datetime="2021-11-15">
+Nov 15, 2021
+</time>
+<span class="post-meta-length">5 min read</span>
+</div>
+<div class="content-wrapper">
+<div class="post-content u-text-format">
+<blockquote>
+<h1><a id="user-content-discord-bot-in-golang" class="anchor" aria-hidden="true" href="https://golangexample.com/discord-bot-in-golang/#discord-bot-in-golang"></a>Discord Bot in Golang.</h1>
+</blockquote>
+<h3><a id="user-content---in-this-we-will-be-creating-a-simple-discord-bot-which-retur-pong-when-we-type-ping--for-this-you-have-to-be-admin-of-a-server-on-discord-if-you-arent-already-or-create-a-new-server-for-this-project-use--go-to-developer-portal-in-your-browser-and-click-on-new-application-on-top-right-side--name-the-app-as-ping-bot-then-click-create-you-can-be-able-to-see-your-application-id-and-public-key--go-to-bot-section-which-is-on-mid-left-side-copy-your-bot-token-and-save-it-somewhere-for-future-use-then-scroll-to-lower-most-section-of-bot-page-check-all-of-these-permissionsafter-this-copy-this-link-httpsdiscordappcomoauth2authorizeclient_idclientidscopebotand-replace-client-id-with-your-application-id-and-search-it-in-you-brower--there-should-be-an-option-to-choose-your-discord-server--choose-that-server-in-which-you-are-admin-after-that-you-will-be-able-to-see-ping-bot-in-your-user-column-on-right-side--but-it-wont-reply-pong-when-we-type-ping-currentlycreate-a-configjson-file--which-will-store-our-bot-token-and-botprefix--we-will-create-a-function-to-read-this-file-latertoken---put-your-copied-bot-token-herebotprefix--" class="anchor" aria-hidden="true" href="https://golangexample.com/discord-bot-in-golang/#--in-this-we-will-be-creating-a-simple-discord-bot-which-retur-pong-when-we-type-ping--for-this-you-have-to-be-admin-of-a-server-on-discord-if-you-arent-already-or-create-a-new-server-for-this-project-use--go-to-developer-portal-in-your-browser-and-click-on-new-application-on-top-right-side--name-the-app-as-ping-bot-then-click-create-you-can-be-able-to-see-your-application-id-and-public-key--go-to-bot-section-which-is-on-mid-left-side-copy-your-bot-token-and-save-it-somewhere-for-future-use-then-scroll-to-lower-most-section-of-bot-page-check-all-of-these-permissionsafter-this-copy-this-link-httpsdiscordappcomoauth2authorizeclient_idclientidscopebotand-replace-client-id-with-your-application-id-and-search-it-in-you-brower--there-should-be-an-option-to-choose-your-discord-server--choose-that-server-in-which-you-are-admin-after-that-you-will-be-able-to-see-ping-bot-in-your-user-column-on-right-side--but-it-wont-reply-pong-when-we-type-ping-currentlycreate-a-configjson-file--which-will-store-our-bot-token-and-botprefix--we-will-create-a-function-to-read-this-file-latertoken---put-your-copied-bot-token-herebotprefix--"></a><br>
+In this we will be creating a simple discord bot which retur **pong** when we type **ping** . <p></p>
+<p dir="auto">For this you have to be admin of a server on discord if you aren’t already or create a new server for this project use . Go to <a href="https://discord.com/developers/applications" rel="nofollow" target="_blank"><strong>Developer Portal</strong></a> in your browser and click on <strong>New Application</strong> on top right side , name the app as <strong>ping-bot</strong> then click create. You can be able to see your <strong>Application Id</strong> and <strong>Public Key</strong> . Go to bot section which is on mid left side ,copy your <strong>Bot-Token</strong> and save it somewhere for future use .<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/Rahulkumar2002/discord-bot-golang/blob/master/img/image1.png"><img src="./Discord Bot in Golang_files/image1.png" alt="copying-token-img" style="max-width: 100%"></a></p>
+<p dir="auto">Then scroll to lower most section of bot page check all of these permissions.</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/Rahulkumar2002/discord-bot-golang/blob/master/img/image2.png"><img src="./Discord Bot in Golang_files/image2.png" alt="permission-image" style="max-width: 100%"></a></p>
+<p dir="auto">After this copy this link <code>"https://discordapp.com/oauth2/authorize?client_id=[CLIENTID]&amp;scope=bot"</code>and replace <strong>Client Id</strong> with your <strong>Application Id</strong> and search it in you brower . There should be an option to choose your discord server , choose that server in which you are admin. After that you will be able to see <strong>ping-bot</strong> in your user column on right side . But it won’t reply <strong>pong</strong> when we type <strong>ping</strong> currently.</p>
+<p dir="auto">Create a <strong>config.json</strong> file , which will store our <strong>Bot-Token</strong> and <strong>BotPrefix</strong> . We will create a function to read this file later.</p>
+<div class="highlight highlight-source-json position-relative overflow-auto" data-snippet-clipboard-copy-content="&quot;Token&quot;  : &quot;[put-your-copied-bot-token-here]&quot;,
+&quot;BotPrefix&quot; : &quot;!&quot;
+"><p></p>
+<pre><span class="pl-ent">"Token"  </span>: <span class="pl-s"><span class="pl-pds">"</span>[put-your-copied-bot-token-here]<span class="pl-pds">"</span></span>,
+<span class="pl-ent">"BotPrefix" </span>: <span class="pl-s"><span class="pl-pds">"</span>!<span class="pl-pds">"</span></span></pre>
+</div>
+</h3>
+<h2><a id="user-content-creating-maingo-file" class="anchor" aria-hidden="true" href="https://golangexample.com/discord-bot-in-golang/#creating-maingo-file"></a>Creating Main.go file</h2>
+<p dir="auto">First create a folder &amp; name it <strong>GOLANG-DISCORD-BOT</strong> . Open your <strong>Powershell</strong> , navigate to your <strong>GOLANG-DISCORD-BOT</strong> , run these command :</p>
+<ol>
+<li>To create a go.mod file init <code>go mod init golang-discord-bot</code>.</li>
+<li><code>go mod tidy</code> just a requirement.</li>
+<li><code>go get "github.com/bwmarrin/discordgo"</code> this is a package which we will be using to create our discord bot in Golang .</li>
+</ol>
+<p dir="auto">Create a <strong>main.go</strong> file , we will be importing three packages :</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="package main
+
+import (
+  &quot;fmt&quot;
+  &quot;golang-discord-bot/bot&quot; //we will create this later
+  &quot;golang-discord-bot/config&quot; //we will create this later
+) 
+"><p></p>
+<pre><span class="pl-k">package</span> main
+
+<span class="pl-k">import</span> (
+  <span class="pl-s">"fmt"</span>
+  <span class="pl-s">"golang-discord-bot/bot"</span> <span class="pl-c">//we will create this later</span>
+  <span class="pl-s">"golang-discord-bot/config"</span> <span class="pl-c">//we will create this later</span>
+) </pre>
+</div>
+<p dir="auto">Inside func main we have a <strong>config.ReadConfig</strong> function which we will create inside our <strong>config.go</strong> file , it will be used to read our <strong>config.json</strong> file , to check for error we will use if statements.</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="   err := config.ReadConfig()
+
+  if err != nil {
+  	fmt.Println(err.Error())
+  	return
+  }
+
+"><p></p>
+<pre>   <span class="pl-s1">err</span> <span class="pl-c1">:=</span> <span class="pl-s1">config</span>.<span class="pl-en">ReadConfig</span>()
+
+  <span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+  	<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+  	<span class="pl-k">return</span>
+  }</pre>
+</div>
+<p dir="auto">Then we will use <strong>“golang-discord-bot/bot”</strong> package for <strong>bot.Start()</strong> ,we will create it later. Atlast we will have <code>&lt;-make(chan struct{})</code> to make chan struct , then we will return from our function.</p>
+<p dir="auto">Our final main funciton will look like this :</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="package main
+
+import (
+  &quot;fmt&quot;
+  &quot;golang-discord-bot/bot&quot;
+  &quot;golang-discord-bot/config&quot;
+)
+
+func main() {
+  err := config.ReadConfig()
+
+  if err != nil {
+  	fmt.Println(err.Error())
+  	return
+  }
+
+  bot.Start()
+
+  &lt;-make(chan struct{})
+  return
+}
+"><p></p>
+<pre><span class="pl-k">package</span> main
+
+<span class="pl-k">import</span> (
+  <span class="pl-s">"fmt"</span>
+  <span class="pl-s">"golang-discord-bot/bot"</span>
+  <span class="pl-s">"golang-discord-bot/config"</span>
+)
+
+<span class="pl-k">func</span> <span class="pl-en">main</span>() {
+  <span class="pl-s1">err</span> <span class="pl-c1">:=</span> <span class="pl-s1">config</span>.<span class="pl-en">ReadConfig</span>()
+
+  <span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+  	<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+  	<span class="pl-k">return</span>
+  }
+
+  <span class="pl-s1">bot</span>.<span class="pl-en">Start</span>()
+
+  <span class="pl-c1">&lt;-</span><span class="pl-en">make</span>(<span class="pl-k">chan</span> <span class="pl-k">struct</span>{})
+  <span class="pl-k">return</span>
+}</pre>
+</div>
+<h2><a id="user-content-creating-configgo-function" class="anchor" aria-hidden="true" href="https://golangexample.com/discord-bot-in-golang/#creating-configgo-function"></a>Creating config.go function</h2>
+<p dir="auto">Go to your <strong>GOLANG-DISCORD-BOT</strong> &gt; create a folder name as <strong>config</strong> &gt; inside it create a file name <strong>config.go</strong> we will work in it.</p>
+<p dir="auto">Inside <strong>config.go</strong> file , import these packages :</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="package config
+
+import (
+	&quot;encoding/json&quot; 
+	&quot;fmt&quot; //used to print errors majorly.
+	&quot;io/ioutil&quot; //it will be used to help us read our config.json file.
+)
+
+"><p></p>
+<pre><span class="pl-k">package</span> config
+
+<span class="pl-k">import</span> (
+	<span class="pl-s">"encoding/json"</span> 
+	<span class="pl-s">"fmt"</span> <span class="pl-c">//used to print errors majorly.</span>
+	<span class="pl-s">"io/ioutil"</span> <span class="pl-c">//it will be used to help us read our config.json file.</span>
+)</pre>
+</div>
+<p dir="auto">We will declare three variables and one struct named as <strong>configStruct</strong> :</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="var (
+	Token     string //To store value of Token from config.json .
+	BotPrefix string // To store value of BotPrefix from config.json.
+
+	config *configStruct //To store value extracted from config.json.
+)
+
+type configStruct struct {
+	Token     string `json : &quot;Token&quot;`
+	BotPrefix string `json : &quot;BotPrefix&quot;`
+}
+"><p></p>
+<pre><span class="pl-k">var</span> (
+	<span class="pl-s1">Token</span>     <span class="pl-smi">string</span> <span class="pl-c">//To store value of Token from config.json .</span>
+	<span class="pl-s1">BotPrefix</span> <span class="pl-smi">string</span> <span class="pl-c">// To store value of BotPrefix from config.json.</span>
+
+	<span class="pl-s1">config</span> <span class="pl-c1">*</span><span class="pl-smi">configStruct</span> <span class="pl-c">//To store value extracted from config.json.</span>
+)
+
+<span class="pl-k">type</span> <span class="pl-smi">configStruct</span> <span class="pl-k">struct</span> {
+	<span class="pl-c1">Token</span>     <span class="pl-smi">string</span> <span class="pl-s">`json : "Token"`</span>
+	<span class="pl-c1">BotPrefix</span> <span class="pl-smi">string</span> <span class="pl-s">`json : "BotPrefix"`</span>
+}</pre>
+</div>
+<p dir="auto">Definition of <strong>ReadConfig()</strong> function which will return an error if occurred .</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="func ReadConfig() error {
+	fmt.Println(&quot;Reading config file...&quot;)
+	file, err := ioutil.ReadFile(&quot;./config.json&quot;) // ioutil package&#39;s ReadFile method which we read config.json and return it&#39;s value we will then store it in file variable and if an error ocurrs it will be stored in err .
+
+//Handling error and printing it using fmt package&#39;s Println function and returning it .
+	if err != nil {
+		fmt.Println(err.Error())
+		return err
+	}
+    
+// We are here printing value of file variable by explicitly converting it to string .
+
+	fmt.Println(string(file))
+// Here we performing a simple task by copying value of file into config variable which we have declared above , and if there any error we are storing it in err . Unmarshal takes second arguments reference remember it .
+	err = json.Unmarshal(file, &amp;config)
+
+//Handling error 
+	if err != nil {
+		fmt.Println(err.Error())
+		return err
+	}
+
+// After storing value in config variable we will access it and storing it in our declared variables .
+	Token = config.Token
+	BotPrefix = config.BotPrefix
+
+//If there isn&#39;t any error we will return nil.
+	return nil
+
+}
+"><p></p>
+<pre><span class="pl-k">func</span> <span class="pl-en">ReadConfig</span>() <span class="pl-smi">error</span> {
+	<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s">"Reading config file..."</span>)
+	<span class="pl-s1">file</span>, <span class="pl-s1">err</span> <span class="pl-c1">:=</span> <span class="pl-s1">ioutil</span>.<span class="pl-en">ReadFile</span>(<span class="pl-s">"./config.json"</span>) <span class="pl-c">// ioutil package's ReadFile method which we read config.json and return it's value we will then store it in file variable and if an error ocurrs it will be stored in err .</span>
+
+<span class="pl-c">//Handling error and printing it using fmt package's Println function and returning it .</span>
+	<span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+		<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+		<span class="pl-k">return</span> <span class="pl-s1">err</span>
+	}
+    
+<span class="pl-c">// We are here printing value of file variable by explicitly converting it to string .</span>
+
+	<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-en">string</span>(<span class="pl-s1">file</span>))
+<span class="pl-c">// Here we performing a simple task by copying value of file into config variable which we have declared above , and if there any error we are storing it in err . Unmarshal takes second arguments reference remember it .</span>
+	<span class="pl-s1">err</span> <span class="pl-c1">=</span> <span class="pl-s1">json</span>.<span class="pl-en">Unmarshal</span>(<span class="pl-s1">file</span>, <span class="pl-c1">&amp;</span><span class="pl-s1">config</span>)
+
+<span class="pl-c">//Handling error </span>
+	<span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+		<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+		<span class="pl-k">return</span> <span class="pl-s1">err</span>
+	}
+
+<span class="pl-c">// After storing value in config variable we will access it and storing it in our declared variables .</span>
+	<span class="pl-s1">Token</span> <span class="pl-c1">=</span> <span class="pl-s1">config</span>.<span class="pl-c1">Token</span>
+	<span class="pl-s1">BotPrefix</span> <span class="pl-c1">=</span> <span class="pl-s1">config</span>.<span class="pl-c1">BotPrefix</span>
+
+<span class="pl-c">//If there isn't any error we will return nil.</span>
+	<span class="pl-k">return</span> <span class="pl-c1">nil</span>
+
+}</pre>
+</div>
+<h2><a id="user-content-creating-botgo-file" class="anchor" aria-hidden="true" href="https://golangexample.com/discord-bot-in-golang/#creating-botgo-file"></a>Creating bot.go file</h2>
+<p dir="auto">Go to your <strong>GOLANG-DISCORD-BOT</strong> &gt; create a folder name as <strong>bot</strong> &gt; inside it create a file name <strong>bot.go</strong> we will work in it.</p>
+<p dir="auto">Inside <strong>bot.go</strong> we will import these packages :</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="package bot
+
+import (
+   &quot;fmt&quot; //to print errors
+   &quot;golang-discord-bot/config&quot; //importing our config package which we have created above
+
+   &quot;github.com/bwmarrin/discordgo&quot; //discordgo package from the repo of bwmarrin . 
+)
+"><p></p>
+<pre><span class="pl-k">package</span> bot
+
+<span class="pl-k">import</span> (
+   <span class="pl-s">"fmt"</span> <span class="pl-c">//to print errors</span>
+   <span class="pl-s">"golang-discord-bot/config"</span> <span class="pl-c">//importing our config package which we have created above</span>
+
+   <span class="pl-s">"github.com/bwmarrin/discordgo"</span> <span class="pl-c">//discordgo package from the repo of bwmarrin . </span>
+)</pre>
+</div>
+<p dir="auto">Declaring two variables , first one will be <strong>BotId</strong> which is a string it will store id of bot after making it a user . Second one is <strong>goBot</strong> which is of type <strong>discordgo.Session</strong> .</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="var BotId string
+var goBot *discordgo.Session
+"><p></p>
+<pre><span class="pl-k">var</span> <span class="pl-s1">BotId</span> <span class="pl-smi">string</span>
+<span class="pl-k">var</span> <span class="pl-s1">goBot</span> <span class="pl-c1">*</span>discordgo.<span class="pl-smi">Session</span></pre>
+</div>
+<p dir="auto">Creating <strong>Start</strong> function</p>
+<div class="highlight highlight-source-go position-relative overflow-auto" data-snippet-clipboard-copy-content="func Start() {
+
+    //creating new bot session
+	goBot, err := discordgo.New(&quot;Bot &quot; + config.Token)
+
+//Handling error
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+// Making our bot a user using User function .
+	u, err := goBot.User(&quot;@me&quot;)
+//Handlinf error
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+// Storing our id from u to BotId .
+	BotId = u.ID
+
+// Adding handler function to handle our messages using AddHandler from discordgo package. We will declare messageHandler function later.
+	goBot.AddHandler(messageHandler)
+
+
+	err = goBot.Open()
+//Error handling
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+    //If every thing works fine we will be printing this.
+	fmt.Println(&quot;Bot is running !&quot;)
+}
+
+//Definition of messageHandler function it takes two arguments first one is discordgo.Session which is s , second one is discordgo.MessageCreate which is m.
+func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
+    //Bot musn&#39;t reply to it&#39;s own messages , to confirm it we perform this check.
+	if m.Author.ID == BotId {
+		return
+	}
+  //If we message ping to our bot in our discord it will return us pong .
+	if m.Content == &quot;ping&quot; {
+		_, _ = s.ChannelMessageSend(m.ChannelID, &quot;pong&quot;)
+	}
+}
+"><p></p>
+<pre><span class="pl-k">func</span> <span class="pl-en">Start</span>() {
+
+    <span class="pl-c">//creating new bot session</span>
+	<span class="pl-s1">goBot</span>, <span class="pl-s1">err</span> <span class="pl-c1">:=</span> <span class="pl-s1">discordgo</span>.<span class="pl-en">New</span>(<span class="pl-s">"Bot "</span> <span class="pl-c1">+</span> <span class="pl-s1">config</span>.<span class="pl-c1">Token</span>)
+
+<span class="pl-c">//Handling error</span>
+	<span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+		<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+		<span class="pl-k">return</span>
+	}
+<span class="pl-c">// Making our bot a user using User function .</span>
+	<span class="pl-s1">u</span>, <span class="pl-s1">err</span> <span class="pl-c1">:=</span> <span class="pl-s1">goBot</span>.<span class="pl-en">User</span>(<span class="pl-s">"@me"</span>)
+<span class="pl-c">//Handlinf error</span>
+	<span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+		<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+		<span class="pl-k">return</span>
+	}
+<span class="pl-c">// Storing our id from u to BotId .</span>
+	<span class="pl-s1">BotId</span> <span class="pl-c1">=</span> <span class="pl-s1">u</span>.<span class="pl-c1">ID</span>
+
+<span class="pl-c">// Adding handler function to handle our messages using AddHandler from discordgo package. We will declare messageHandler function later.</span>
+	<span class="pl-s1">goBot</span>.<span class="pl-en">AddHandler</span>(<span class="pl-s1">messageHandler</span>)
+
+
+	<span class="pl-s1">err</span> <span class="pl-c1">=</span> <span class="pl-s1">goBot</span>.<span class="pl-en">Open</span>()
+<span class="pl-c">//Error handling</span>
+	<span class="pl-k">if</span> <span class="pl-s1">err</span> <span class="pl-c1">!=</span> <span class="pl-c1">nil</span> {
+		<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s1">err</span>.<span class="pl-en">Error</span>())
+		<span class="pl-k">return</span>
+	}
+    <span class="pl-c">//If every thing works fine we will be printing this.</span>
+	<span class="pl-s1">fmt</span>.<span class="pl-en">Println</span>(<span class="pl-s">"Bot is running !"</span>)
+}
+
+<span class="pl-c">//Definition of messageHandler function it takes two arguments first one is discordgo.Session which is s , second one is discordgo.MessageCreate which is m.</span>
+<span class="pl-k">func</span> <span class="pl-en">messageHandler</span>(<span class="pl-s1">s</span> <span class="pl-c1">*</span>discordgo.<span class="pl-smi">Session</span>, <span class="pl-s1">m</span> <span class="pl-c1">*</span>discordgo.<span class="pl-smi">MessageCreate</span>) {
+    <span class="pl-c">//Bot musn't reply to it's own messages , to confirm it we perform this check.</span>
+	<span class="pl-k">if</span> <span class="pl-s1">m</span>.<span class="pl-c1">Author</span>.<span class="pl-c1">ID</span> <span class="pl-c1">==</span> <span class="pl-s1">BotId</span> {
+		<span class="pl-k">return</span>
+	}
+  <span class="pl-c">//If we message ping to our bot in our discord it will return us pong .</span>
+	<span class="pl-k">if</span> <span class="pl-s1">m</span>.<span class="pl-c1">Content</span> <span class="pl-c1">==</span> <span class="pl-s">"ping"</span> {
+		<span class="pl-s1">_</span>, <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-s1">s</span>.<span class="pl-en">ChannelMessageSend</span>(<span class="pl-s1">m</span>.<span class="pl-c1">ChannelID</span>, <span class="pl-s">"pong"</span>)
+	}
+}</pre>
+</div>
+<p dir="auto">So with this our discord bot is completed . You can check it by going to your discord server and messaging <em>ping</em> to your bot it will reply <em>pong</em> .</p>
+<p dir="auto">Thank you for reading this .</p>
+<p dir="auto">Feel free to fork this repo and use this code.</p>
+<h2 id="github">GitHub</h2>
+<p><a class="github-view" href="https://github.com/Rahulkumar2002/discord-bot-golang?ref=golangexample.com" target="_blank" rel="nofollow noopener">View Github</a></p>
+</div>
+<div class="post-tags">
+<a class="tag tag-discord" href="https://golangexample.com/tag/discord/" title="Discord">Discord</a><a class="tag tag-bot" href="https://golangexample.com/tag/bot/" title="Bot">Bot</a>
+</div>
+<div class="share u-hover-wrapper">
+<a class="share-item share-facebook u-hover-item" href="https://www.facebook.com/sharer.php?u=https://golangexample.com/discord-bot-in-golang/" target="_blank"><i class="icon icon-facebook"></i></a>
+<a class="share-item share-twitter u-hover-item" href="https://twitter.com/intent/tweet?url=https://golangexample.com/discord-bot-in-golang/&amp;text=Discord%20Bot%20in%20Golang" target="_blank"><i class="icon icon-twitter"></i></a>
+<a class="share-item share-pinterest u-hover-item" href="https://pinterest.com/pin/create/button/?url=https://golangexample.com/discord-bot-in-golang/&amp;media=&amp;description=Discord%20Bot%20in%20Golang" target="_blank"><i class="icon icon-pinterest"></i></a>
+<a class="share-item share-linkedin u-hover-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://golangexample.com/discord-bot-in-golang/&amp;title=Discord%20Bot%20in%20Golang" target="_blank"><i class="icon icon-linkedin"></i></a>
+<a class="share-item share-reddit u-hover-item" href="https://reddit.com/submit?url=https://golangexample.com/discord-bot-in-golang/&amp;title=Discord%20Bot%20in%20Golang" target="_blank"><i class="icon icon-reddit"></i></a>
+<a class="share-item share-vk u-hover-item" href="https://vk.com/share.php?url=https://golangexample.com/discord-bot-in-golang/&amp;title=Discord%20Bot%20in%20Golang" target="_blank"><i class="icon icon-vk"></i></a>
+</div> </div>
+</article>
+<section class="author">
+<div class="author-image-placeholder u-placeholder">
+<img class="author-image lazyload u-object-fit" data-src="/content/images/2022/05/Jeff-Lampkin-96x96.jpeg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="John">
+</div>
+<div class="author-wrapper">
+<header class="author-header">
+<div class="author-header-wrapper">
+<h4 class="author-name">John</h4>
+<div class="author-social">
+<a class="author-social-item author-more" href="https://golangexample.com/author/golang/">More posts</a>
+</div>
+</div>
+</header>
+<div class="author-bio">John was the first writer to have joined golangexample.com. He has since then inculcated very effective writing and reviewing culture at golangexample which rivals have found impossible to imitate.</div>
+</div>
+</section>
+<div class="navigation">
+<div class="navigation-item navigation-previous">
+<img class="navigation-image lazyload u-object-fit" data-srcset="/content/images/2021/11/Snipaste_2021-11-15_12-25-56.jpg 400w, /content/images/2021/11/Snipaste_2021-11-15_12-25-56.jpg 750w, /content/images/2021/11/Snipaste_2021-11-15_12-25-56.jpg 960w" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" alt="A malware simulation harness for evaluating your security controls">
+<span class="navigation-label">Previous Post</span>
+<h4 class="navigation-title">A malware simulation harness for evaluating your security controls</h4>
+<a class="u-permalink" href="https://golangexample.com/a-malware-simulation-harness-for-evaluating-your-security-controls/"></a>
+</div>
+<div class="navigation-item navigation-next">
+<img class="navigation-image lazyload u-object-fit" data-srcset=" 400w,  750w,  960w" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" alt="HA LDAP based key/value solution for projects configuration storing with multi master replication support">
+<span class="navigation-label">Next Post</span>
+<h4 class="navigation-title">HA LDAP based key/value solution for projects configuration storing with multi master replication support</h4>
+<a class="u-permalink" href="https://golangexample.com/ha-ldap-based-key-value-solution-for-projects-configuration-storing-with-multi-master-replication-support/"></a>
+</div>
+</div>
+<section class="related-posts">
+<h3 class="related-title">
+<span class="text">You might also like...</span>
+</h3>
+<div class="post-feed">
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/bot/">Bot</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-bot-that-sends-discord-webhooks-on-new-messages-in-a-berty-group/">A bot that sends Discord webhooks on new messages in a Berty group</a>
+</h2>
+</header>
+<div class="post-excerpt">
+A bot that sends Discord webhooks on new messages in a Berty group
+</div>
+<span class="post-card-tags">03 July 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/coders-community-discord-server-official-bot-in-golang/">Coders Community Discord Server Official Bot in Golang</a>
+</h2>
+</header>
+<div class="post-excerpt">
+Coders Community Discord Server Official Bot in Golang
+</div>
+<span class="post-card-tags">28 June 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/retrieve-etna-notification-and-send-new-one-to-discord-bot/">Retrieve ETNA notification and send new one to discord bot</a>
+</h2>
+</header>
+<div class="post-excerpt">
+Retrieve ETNA notification and send new one to discord bot
+</div>
+<span class="post-card-tags">09 June 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/discord-chat-bot-using-simple-markov-model/">Discord chat bot using simple markov model</a>
+</h2>
+</header>
+<div class="post-excerpt">
+Discord chat bot using simple markov model
+</div>
+<span class="post-card-tags">04 June 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/magic8ball-discord-bot-written-in-go/">Magic8Ball Discord bot written in Go</a>
+</h2>
+</header>
+<div class="post-excerpt">
+Magic8Ball Discord bot written in Go
+</div>
+<span class="post-card-tags">02 June 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-trivial-and-super-lightweight-discord-bot-made-in-go/">A trivial and super lightweight discord bot made in Go</a>
+</h2>
+</header>
+<div class="post-excerpt">
+A trivial and super lightweight discord bot made in Go
+</div>
+<span class="post-card-tags">31 May 2022</span>
+</div>
+</div>
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/email/">Email</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-really-smart-bot-that-connects-with-your-email-discord-telegram-and-gitlab/">A really smart bot that connects with your email, discord, telegram and gitlab</a>
+</h2>
+</header>
+<div class="post-excerpt">
+A really smart bot that connects with your email, discord, telegram and gitlab
+</div>
+<span class="post-card-tags">12 May 2022</span>
+</div>
+</div>
+
+</article>
+<article class="post2  no-image">
+<div class="post-wrapper">
+<div class="post-right">
+<header class="post-header">
+<a class="post-tag" href="https://golangexample.com/tag/discord/">Discord</a>
+<h2 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/easy-to-use-discord-bot-framework-for-golang/">Easy to use discord bot framework for golang</a>
+</h2>
+</header>
+<div class="post-excerpt">
+Easy to use discord bot framework for golang
+</div>
+<span class="post-card-tags">06 May 2022</span>
+</div>
+</div>
+</article> </div>
+</section>
+</main>
+</div>
+</div>
+<div class="sidebar-column col-xl-3 col-lg-4 hidden-xs hidden-sm hidden-md" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+ <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><aside class="widget-area">
+ <div class="widget widget-tags ">
+<div class="gg-card2">
+
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-5680150941998747" data-ad-slot="9627773903"></ins>
+
+</div>
+</div>
+<div class="widget widget-tags">
+<h4 class="widget-title">Tags</h4>
+<div class="tag-feed">
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/tools/">
+<span class="tag-name">Tools</span>
+<span class="tag-count">1175</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/command-line/">
+<span class="tag-name">Command Line</span>
+<span class="tag-count">1142</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/api/">
+<span class="tag-name">API</span>
+<span class="tag-count">730</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/apps-tag/">
+<span class="tag-name">Apps</span>
+<span class="tag-count">604</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/http/">
+<span class="tag-name">HTTP</span>
+<span class="tag-count">515</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/generator/">
+<span class="tag-name">Generator</span>
+<span class="tag-count">510</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/server/">
+<span class="tag-name">Server</span>
+<span class="tag-count">458</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/kubernetes/">
+<span class="tag-name">Kubernetes</span>
+<span class="tag-count">449</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/json/">
+<span class="tag-name">JSON</span>
+<span class="tag-count">340</span>
+ </a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/database/">
+<span class="tag-name">Database</span>
+<span class="tag-count">334</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/testing/">
+<span class="tag-name">Testing</span>
+<span class="tag-count">293</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/files/">
+<span class="tag-name">Files</span>
+<span class="tag-count">269</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/framework/">
+<span class="tag-name">Framework</span>
+<span class="tag-count">268</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/function/">
+<span class="tag-name">Function</span>
+<span class="tag-count">265</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/proxy/">
+<span class="tag-name">Proxy</span>
+<span class="tag-count">264</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/bot/">
+<span class="tag-name">Bot</span>
+<span class="tag-count">253</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/terminal/">
+<span class="tag-name">Terminal</span>
+<span class="tag-count">248</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/script/">
+<span class="tag-name">Script</span>
+<span class="tag-count">238</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/security/">
+<span class="tag-name">Security</span>
+<span class="tag-count">227</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/logging/">
+<span class="tag-name">Logging</span>
+<span class="tag-count">225</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/network/">
+<span class="tag-name">Network</span>
+<span class="tag-count">225</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/grpc/">
+<span class="tag-name">gRPC</span>
+<span class="tag-count">223</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/distributed/">
+<span class="tag-name">Distributed</span>
+<span class="tag-count">221</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/github/">
+<span class="tag-name">GitHub</span>
+<span class="tag-count">211</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/parser/">
+<span class="tag-name">Parser</span>
+<span class="tag-count">209</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/protocol/">
+<span class="tag-name">Protocol</span>
+<span class="tag-count">207</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/automation/">
+<span class="tag-name">Automation</span>
+<span class="tag-count">207</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/restful-api/">
+<span class="tag-name">RESTful API</span>
+<span class="tag-count">207</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/docker/">
+<span class="tag-name">Docker</span>
+<span class="tag-count">202</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-link" href="https://golangexample.com/tag/microservices/">
+<span class="tag-name">Microservices</span>
+<span class="tag-count">201</span>
+</a>
+</div>
+</div>
+</div> <div class="widget widget-recent">
+<h4 class="widget-title">Recent Posts</h4>
+<div class="recent-posts">
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-simple-tui-apps-for-u-root-environments/">A simple TUI apps for u-root environments</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/use-sql-to-instantly-query-weatherkit/">Use SQL to instantly query WeatherKit</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/http-to-grpc-gateway-standalone/">HTTP to gRPC gateway standalone</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-cli-that-makes-it-easy-to-bookmark-your-favorite-terminal-commands/">A CLI that makes it easy to bookmark your favorite terminal commands</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/k8s-clusters-on-google-cloud/">K8s Clusters on Google Cloud</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/inspect-your-context-context-values/">Inspect your context.Context values</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/mediator-pattern-implementation-in-golang-and-helpful-in-creating-cqrs-based-applications/">Mediator pattern implementation in Golang and helpful in creating CQRS based applications</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-simple-regex-to-golang-compiler-based-on-thompsons-construction-algorithm/">A simple regex-to-golang compiler based on Thompson's construction algorithm</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-simple-tool-for-creating-backups-from-postgres-docker-containers-and-upload-them-to-aws-s3/">A simple tool for creating backups from Postgres Docker containers and upload them to AWS S3</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/botty-a-simple-go-application-that-posts-open-pull-requests-to-a-team-communication-app/">Botty - A simple Go application that posts open pull requests to a team communication app</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/argsv-go-command-line-argument-parser/">Argsv.go (Command line argument parser)</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/proof-of-concept-search-entire-file-trees-super-fast/">(Proof-of-concept) Search entire file trees super-fast</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/avl-balanced-generic-binary-trees-in-go/">AVL balanced generic binary trees in Go</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/memcat-pipeview-tools-for-analyzing-program-memory-and-any-binary-data-as-images/">Memcat &amp; pipeview: tools for analyzing program memory and any binary data as images</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-fast-tool-to-scan-saaspaas-app-written-in-go/">A fast tool to scan SAAS,PAAS App written in Go</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/lox-implementation-in-go/">Lox implementation in Go</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/simple-terminal-application-that-returns-the-ip-or-name-servers-for-a-domain-address/">Simple terminal application that returns the IP or Name Servers for a domain address</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-provider-to-get-the-amount-of-memory-for-each-instance-class-of-rds/">A provider to get the amount of memory for each instance class of RDS</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/ipa-server-with-golang/">Ipa Server with Golang</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/hyperdbgs-graphical-user-interface-gui/">HyperDbg's Graphical User Interface (GUI)</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/generate-some-random-data/">Generate some random data</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/elytra-an-open-source-gophertunnel-cheat-proxy-designed-for-simplicity-and-sleak-cheating/">Elytra, an open-source gophertunnel cheat proxy designed for simplicity and sleak cheating</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/slack-bot-creating-github-issue-with-a-specific-reacji/">Slack bot creating GitHub issue with a specific Reacji</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/comment-auto-confrim-order-in-facebook-live/">Comment auto confrim order in facebook live</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/reverse-shell-over-tls-in-golang/">Reverse shell over TLS (in golang)</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/safe-wallet-with-golang/">Safe wallet with golang</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/simple-port-scanner-written-in-golang/">Simple port scanner written in Golang</a>
+</h5>
+<time class="post-date" datetime="2022-07-17">
+Jul 17, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-client-packaged-based-on-go-redis-that-operates-tair-for-redis-modules/">A client packaged based on go-redis that operates Tair For Redis Modules</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/a-port-of-githubs-identicon-algorithm-to-go/">A port of GitHub's identicon algorithm to Go</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/apkc-a-bare-bones-android-app-build-system-that-lets-you-build-simple-native-android-apps-without-entire-android-ide/">Apkc - A bare-bones Android app build system that lets you build simple native Android apps without entire Android IDE</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/exploring-dagger-golang/">Exploring dagger + Golang</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/sushis-internet-protocol-scanner-for-minecraft/">Sushi's Internet Protocol Scanner (for Minecraft)</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/solve-the-challenge-and-save-your-spot-for-a-fast-track-interview-with-line-man-wongnai-engineering-team/">Solve the challenge and Save your spot for a fast track interview with LINE MAN Wongnai Engineering Team</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/motherearths-logger-subsystem-written-in-go/">MotherEarth's logger subsystem written in go</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+<article class="recent">
+<header class="post-header">
+<h5 class="post-title">
+<a class="post-title-link" href="https://golangexample.com/mdns-a-simple-mdns-client-server-library-by-hashicorp/">MDNS - A simple mdns client/server library by Hashicorp</a>
+</h5>
+<time class="post-date" datetime="2022-07-16">
+Jul 16, 2022
+</time></header> </article>
+</div>
+</div>
+<div class="widget widget-recent">
+<div class="gg-card3">
+
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-5680150941998747" data-ad-slot="3460995508"></ins>
+
+</div>
+</div></aside></div></div>
+</div>
+</div>
+<link rel="stylesheet" href="./Discord Bot in Golang_files/prism.css">
+</div>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-inner">
+<div class="copyright ">
+Golang Example is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. As an Amazon Associate, we earn from qualifying purchases. </div>
+<div class="copyright ">
+<a href="https://golangexample.com/about/">About</a>&nbsp; | &nbsp;<a href="https://golangexample.com/contact/">Contact</a>&nbsp; | &nbsp;<a href="https://golangexample.com/privacy-policy/">Privacy Policy</a> | &nbsp;<a href="https://golangexample.com/affiliate-disclosure/">Affiliate Disclosure</a>
+</div>
+<div class="copyright">
+Powered by <a href="https://golangexample.com/" target="_blank">Golang Example</a>
+</div>
+</div>
+</div>
+</footer> </div>
+<script type="text/javascript" src="./Discord Bot in Golang_files/jquery.min.js.download"></script>
+<script src="./Discord Bot in Golang_files/main.min.js.download"></script>
+<script type="text/javascript" src="./Discord Bot in Golang_files/prism.js.download"></script>
+<script src="./Discord Bot in Golang_files/nav.js.download"></script>
+<script src="./Discord Bot in Golang_files/go.js.download"></script>
+<script data-isso="https://golangexample.com/comment" src="./Discord Bot in Golang_files/embed.min.js.download" data-isso-gravatar="true" data-isso-avatar="false"></script>
+<script type="text/javascript">
+var links = document.querySelectorAll("a");
+for (var i = 0; i < links.length; i++) {
+    if (links[i].hostname != window.location.hostname) {
+        links[i].target = "_blank";     
+    }
+}
+</script>
+<script async="" defer="" data-website-id="3fbfa979-f7d9-4530-9d67-f39cec4067c4" src="./Discord Bot in Golang_files/umami.js.download"></script>
+
+<div id="forest-ext-shadow-host"></div><div id="rememberry__extension__root" style="all: unset;"></div></body></html>
